@@ -1,7 +1,9 @@
 import React, { useState, useEffect, ChangeEvent } from "react";
 import SearchBar from "../components/atoms/SearchBar";
+import {PokemonType} from "../types/PokemonType";
+import PokemonCard from "../components/PokemonCard"
 
-interface Pokemon {
+type PokemonBasicType = {
   name: string;
   url: string;
 }
@@ -9,7 +11,10 @@ interface Pokemon {
 
 const Home: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+  const [sortBy, setSortBy] = useState<string>("Pokedex Number");
+  const [sortOrder, setSortOrder] = useState<string>("ASC");
+  const [pokemons, setPokemons] = useState<PokemonType[]>([]);
+
 
   useEffect(() => {
     const fetchDataFromAPI = async () => {
@@ -18,11 +23,11 @@ const Home: React.FC = () => {
         const data = await response.json();
 
         const detailedPokemonData = await Promise.all(
-          data.results.slice(0, 151).map(async (pokemon: Pokemon) => {
+          data.results.map(async (pokemon: PokemonBasicType) => {
             const response = await fetch(pokemon.url);
             const pokemonData = await response.json();
             return {
-              id: pokemonData.id,
+              pokedexNumber: pokemonData.id,
               name: pokemonData.name,
               imageUrl: pokemonData.sprites.front_default,
               typePrymary: pokemonData.types[0].type.name,
@@ -30,8 +35,8 @@ const Home: React.FC = () => {
             };
           })
         );
-          console.log(detailedPokemonData) 
-        
+        console.log(detailedPokemonData)
+
         sessionStorage.setItem('cachedData', JSON.stringify(detailedPokemonData));
         setPokemons(detailedPokemonData);
       } catch (error) {
@@ -51,16 +56,41 @@ const Home: React.FC = () => {
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
-  const filteredItems = pokemons.filter((pokemon) =>
-    pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredItems = pokemons
+    .filter((pokemon) =>
+      pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    .sort((a, b) => {
+      if (sortBy === "Pokedex Number") {
+        return sortOrder === "ASC"
+          ? a.pokedexNumber - b.pokedexNumber
+          : b.pokedexNumber - a.pokedexNumber;
+      } else if (sortBy === "Name") {
+        return sortOrder === "ASC"
+          ? a.name.localeCompare(b.name)
+          : b.name.localeCompare(a.name);
+      }
+      return 0;
+    });
+
+  const handleSortChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setSortBy(event.target.value);
+  };
+
+  const handleOrderChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSortOrder(event.target.checked ? "DESC" : "ASC");
+  };
 
   return (
     <div>
-      <SearchBar onChange={handleSearchChange} />
+      <SearchBar
+        onSearchChange={handleSearchChange}
+        onSortChange={handleSortChange}
+        onOrderChange={handleOrderChange}
+      />
       <ul>
-        {filteredItems.map((pokemon, index) => (
-          <li key={index}>{pokemon.name}</li>
+        {filteredItems.map((pokemon) => (
+          <PokemonCard pokemon={pokemon} key={pokemon.pokedexNumber}/>
         ))}
       </ul>
     </div>
