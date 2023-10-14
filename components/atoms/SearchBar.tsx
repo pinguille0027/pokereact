@@ -1,13 +1,11 @@
 import React from 'react';
+import { ChangeEvent } from 'react';
 
-const SearchBar = ({ onChange }) => {
-  return (
-    <input
-      type="text"
-      placeholder="Buscar..."
-      onChange={(e) => onChange(e.target.value)}
-    />
-  );
+
+// SearchBar.tsx
+const SearchBar: React.FC<{ onChange: (event: ChangeEvent<HTMLInputElement>) => void }> = ({ onChange }) => {
+  return <input type="text" onChange={onChange} />;
 };
+
 
 export default SearchBar;
