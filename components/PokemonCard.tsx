@@ -1,21 +1,21 @@
 import React from 'react';
 import {PokemonType} from "../types/PokemonType"
 import TypeCard from './atoms/TypeCard';
+import styles from "../styles/components/PokemonCard.module.css"
+
 type PokemonCardProps = {
     pokemon: PokemonType;
 };
 
 const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
   return (
-    <div>
-        <div>
-            <img src={pokemon.imageUrl} alt="default front sprite" width="150"/>
+    <div className={styles.cardContainer}>
+            <img src={pokemon.imageUrl} alt="default front sprite"  className={styles.img}/>
+        <div className={styles.title}>
+            <h3 className={styles.name}>{pokemon.name}</h3>
+            <h4 className={styles.number}>{pokemon.pokedexNumber}</h4>
         </div>
-        <div>
-            <h3>{pokemon.name}</h3>
-            <h4><em>{pokemon.pokedexNumber}</em></h4>
-        </div>
-        <div>
+        <div className={styles.typesContainer}>
           <TypeCard type={pokemon.typePrymary}/>
           {pokemon.typeSecondary && <TypeCard type={pokemon.typeSecondary}/>}
         </div>

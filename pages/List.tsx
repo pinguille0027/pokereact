@@ -2,6 +2,7 @@ import React, { useState, useEffect, ChangeEvent } from "react";
 import SearchBar from "../components/atoms/SearchBar";
 import {PokemonType} from "../types/PokemonType";
 import PokemonCard from "../components/PokemonCard"
+import styles from "../styles/list.module.css"
 
 type PokemonBasicType = {
   name: string;
@@ -9,7 +10,7 @@ type PokemonBasicType = {
 }
 
 
-const Home: React.FC = () => {
+const List: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [sortBy, setSortBy] = useState<string>("Pokedex Number");
   const [sortOrder, setSortOrder] = useState<string>("ASC");
@@ -82,7 +83,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div>
+    <main className={styles.main}>
       <SearchBar
         onSearchChange={handleSearchChange}
         onSortChange={handleSortChange}
@@ -93,8 +94,8 @@ const Home: React.FC = () => {
           <PokemonCard pokemon={pokemon} key={pokemon.pokedexNumber}/>
         ))}
       </ul>
-    </div>
+    </main>
   );
 };
 
-export default Home;
+export default List;

@@ -1,0 +1,47 @@
+.cardContainer{
+    display: grid;
+    grid-template-areas:
+        'img title'
+        'img types';
+    padding: 0.5rem;
+    background-color: rgb(var(--color-accent));
+    margin-top: 5px;
+    grid-template-columns: 40% 60%;
+    
+}
+.cardContainer:hover{
+    outline: 2.5px solid rgb(var(--color-blue));
+}
+.img{
+    grid-area: img;
+    width: 150px;
+}
+@media (max-width: 500px) {
+    .img {
+      width: 100px;
+    }
+  }
+.title{
+    grid-area: title;
+    display: flex;
+    justify-content: space-between;
+    max-width: 14.4rem;
+}
+.name::first-letter{
+    text-transform: uppercase;
+}
+.number{
+    font-style: italic;
+    font-weight: 400;
+}
+.number::before{
+    content: "#";
+    font-style: italic;
+    font-weight: 400;
+}
+.typesContainer{
+    grid-area: types;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+}

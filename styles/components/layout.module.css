@@ -1,0 +1,13 @@
+.topbar{
+    background-color: rgb(var(--color-primary));
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3rem 1rem;
+    color: rgb(var(--color-background));
+    margin-bottom: 1rem;
+}
+.nav{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
