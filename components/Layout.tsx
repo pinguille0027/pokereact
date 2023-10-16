@@ -1,23 +1,27 @@
-import styles from "../styles/components/layout.module.css"
-interface IProps {
-  children?: JSX.Element | JSX.Element[];
-}
+import styles from "../styles/components/layout.module.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import List from "../pages/List";
 
-const Layeout: React.FC<IProps> = ({children}) => {
+const Layeout: React.FC = () => {
   return (
-    <div>
+    <div className={styles.ui}>
       <header className={styles.topbar}>
-        <img src="/Pokedexicon.webp" alt="pokedex logo" width="150px" />
+        <img src="/Pokedexicon.webp" alt="pokedex logo" width="150px" className={styles.logo}/>
         <nav className={styles.nav}>
           <h2 hidden>Generation</h2>
           <h2>List</h2>
           <h2>Gallery</h2>
         </nav>
       </header>
-      
-    <div>{children}</div>
+
+      <div className={styles.content}>
+        <Router>
+          <Routes>
+            <Route path="/" element={<List />} />
+          </Routes>
+        </Router>
+      </div>
     </div>
-    
   );
 };
 

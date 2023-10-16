@@ -1,5 +1,5 @@
-import React, { ChangeEvent } from 'react';
-import styles from "../../styles/components/atoms/SearchBar.module.css"
+import React, { ChangeEvent } from "react";
+import styles from "../../styles/components/atoms/SearchBar.module.css";
 
 interface SearchBarProps {
   onSearchChange: (event: ChangeEvent<HTMLInputElement>) => void;
@@ -7,12 +7,20 @@ interface SearchBarProps {
   onOrderChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ onSearchChange, onSortChange, onOrderChange }) => {
+const SearchBar: React.FC<SearchBarProps> = ({
+  onSearchChange,
+  onSortChange,
+  onOrderChange,
+}) => {
   return (
     <form className={styles.formContainer}>
       <section className={styles.section}>
         <label>Search by Name</label>
-        <input type="search" onChange={onSearchChange} className={styles.input}/>
+        <input
+          type="search"
+          onChange={onSearchChange}
+          className={styles.input}
+        />
       </section>
       <section className={styles.section}>
         <label>Sort by</label>
@@ -23,11 +31,13 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearchChange, onSortChange, onO
       </section>
       <section className={styles.section}>
         <label>Ordering</label>
-        <input type="checkbox" onChange={onOrderChange} />
+        <div className={styles.checkContainer}>
+          <input type="checkbox" onChange={onOrderChange} />
+          <span className={styles.triangle}>&#128315;</span>
+        </div>
       </section>
     </form>
   );
 };
 
 export default SearchBar;
-

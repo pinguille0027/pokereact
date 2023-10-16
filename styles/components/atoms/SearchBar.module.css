@@ -5,6 +5,7 @@
     align-items: center;
     gap: 0.25rem;
     padding: 0.5rem 0;
+    width: 575px;
 }
 .section{
     width: 60%;
@@ -15,7 +16,7 @@
 .input{
     border: none;
     outline: none;
-    border-radius: 50px;
+    border-radius: 5px;
     height: 22px;
 }
 .input::-webkit-textfield-decoration-container{
@@ -27,3 +28,35 @@
     border-radius: 1px;
     height: 22px; 
 }
+
+.checkContainer {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    width: 20px;
+    margin-top: 5px;
+}
+/* Hide the browser's default checkbox */
+.checkContainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
+    z-index: 2;
+  }
+  
+  /* Create a custom checkbox */
+  .triangle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    transition: transform 0.3s ease;
+  }
+  .checkContainer input:checked ~ .triangle {
+    transform: rotate(60deg);
+    transition: transform 0.3s ease;
+  }

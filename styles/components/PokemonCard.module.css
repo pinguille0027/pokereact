@@ -3,10 +3,11 @@
     grid-template-areas:
         'img title'
         'img types';
-    padding: 0.5rem;
+    padding: 0.5rem 0rem;
     background-color: rgb(var(--color-accent));
     margin-top: 5px;
     grid-template-columns: 40% 60%;
+    width: 575px;
     
 }
 .cardContainer:hover{

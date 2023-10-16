@@ -5,7 +5,7 @@ type TypeCardProps = {
 };
 
 const TypeCard: React.FC<TypeCardProps> = ({ type }) => {
-    const iconURI= `../../typesIcons/${type}.svg`
+    const iconURI= `/typesIcons/${type}.svg`
     const typeBackground = `${type}`
     return (
         <div className={`${styles.container} ${styles[typeBackground]}`}>

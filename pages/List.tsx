@@ -4,6 +4,7 @@ import {PokemonType} from "../types/PokemonType";
 import PokemonCard from "../components/PokemonCard"
 import styles from "../styles/list.module.css"
 
+
 type PokemonBasicType = {
   name: string;
   url: string;
@@ -84,16 +85,18 @@ const List: React.FC = () => {
 
   return (
     <main className={styles.main}>
+      <div>
       <SearchBar
         onSearchChange={handleSearchChange}
         onSortChange={handleSortChange}
         onOrderChange={handleOrderChange}
       />
-      <ul>
+      </div>
+      <div className={styles.cardContainer}>
         {filteredItems.map((pokemon) => (
           <PokemonCard pokemon={pokemon} key={pokemon.pokedexNumber}/>
         ))}
-      </ul>
+      </div>
     </main>
   );
 };
