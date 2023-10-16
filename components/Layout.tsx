@@ -1,6 +1,7 @@
 import styles from "../styles/components/layout.module.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import List from "../pages/List";
+import Gallery from "../pages/Galery";
 
 const Layeout: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const Layeout: React.FC = () => {
         <Router>
           <Routes>
             <Route path="/" element={<List />} />
+            <Route path="/gallery" element={<Gallery/>}/>
           </Routes>
         </Router>
       </div>

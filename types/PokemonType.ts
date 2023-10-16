@@ -1,7 +1,8 @@
 export type PokemonType = {
     pokedexNumber: number,
     name: string,
-    imageUrl: string,
+    spriteUrl: string,
+    artUrl: string,
     typePrymary: string,
     typeSecondary: string | null
   }

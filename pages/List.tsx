@@ -1,58 +1,34 @@
 import React, { useState, useEffect, ChangeEvent } from "react";
 import SearchBar from "../components/atoms/SearchBar";
-import {PokemonType} from "../types/PokemonType";
-import PokemonCard from "../components/PokemonCard"
-import styles from "../styles/list.module.css"
-
-
-type PokemonBasicType = {
-  name: string;
-  url: string;
-}
-
+import { PokemonType } from "../types/PokemonType";
+import PokemonCard from "../components/PokemonCard";
+import styles from "../styles/list.module.css";
+import { fetchPokemons } from "../utils/fetchpokemons";
 
 const List: React.FC = () => {
-  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [sortBy, setSortBy] = useState<string>("Pokedex Number");
   const [sortOrder, setSortOrder] = useState<string>("ASC");
   const [pokemons, setPokemons] = useState<PokemonType[]>([]);
 
-
   useEffect(() => {
-    const fetchDataFromAPI = async () => {
-      try {
-        const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151');
-        const data = await response.json();
-
-        const detailedPokemonData = await Promise.all(
-          data.results.map(async (pokemon: PokemonBasicType) => {
-            const response = await fetch(pokemon.url);
-            const pokemonData = await response.json();
-            return {
-              pokedexNumber: pokemonData.id,
-              name: pokemonData.name,
-              imageUrl: pokemonData.sprites.front_default,
-              typePrymary: pokemonData.types[0].type.name,
-              typeSecondary: pokemonData.types[1]?.type.name || null
-            };
-          })
-        );
-        console.log(detailedPokemonData)
-
-        sessionStorage.setItem('cachedData', JSON.stringify(detailedPokemonData));
-        setPokemons(detailedPokemonData);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        // Manejar el error, mostrar un mensaje al usuario, etc.
+    const fetchData = async () => {
+      const cachedData = sessionStorage.getItem("cachedData");
+      if (!cachedData) {
+        try {
+          const data = await fetchPokemons();
+          if (data) {
+            setPokemons(data);
+          }
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      } else {
+        setPokemons(JSON.parse(cachedData));
       }
     };
 
-    const cachedData = sessionStorage.getItem('cachedData');
-    if (cachedData) {
-      setPokemons(JSON.parse(cachedData));
-    } else {
-      fetchDataFromAPI();
-    }
+    fetchData();
   }, []);
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -86,15 +62,15 @@ const List: React.FC = () => {
   return (
     <main className={styles.main}>
       <div>
-      <SearchBar
-        onSearchChange={handleSearchChange}
-        onSortChange={handleSortChange}
-        onOrderChange={handleOrderChange}
-      />
+        <SearchBar
+          onSearchChange={handleSearchChange}
+          onSortChange={handleSortChange}
+          onOrderChange={handleOrderChange}
+        />
       </div>
       <div className={styles.cardContainer}>
         {filteredItems.map((pokemon) => (
-          <PokemonCard pokemon={pokemon} key={pokemon.pokedexNumber}/>
+          <PokemonCard pokemon={pokemon} key={pokemon.pokedexNumber} />
         ))}
       </div>
     </main>
