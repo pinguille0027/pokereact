@@ -22,6 +22,9 @@
 ul {
   padding: 0;
 }
+html{
+  overflow-y: hidden;
+}
 html,
 body {
   background-color: rgb(var(--color-background));
