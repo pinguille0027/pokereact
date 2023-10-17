@@ -3,11 +3,10 @@ import { PokemonType } from "../types/PokemonType";
 import GalleryCard from "../components/GalleryCard";
 import styles from "../styles/gallery.module.css";
 import { fetchPokemons } from "../utils/fetchpokemons";
+import SelectBar from "../components/SelectBar"
 
 const Gallery: React.FC = () => {
-  /*const [searchTerm, setSearchTerm] = useState<string>("");
-  const [sortBy, setSortBy] = useState<string>("Pokedex Number");
-  const [sortOrder, setSortOrder] = useState<string>("ASC");*/
+  const [selectTerm, setSelectTerm] = useState<string>("");
   const [pokemons, setPokemons] = useState<PokemonType[]>([]);
 
   useEffect(() => {
@@ -30,28 +29,20 @@ const Gallery: React.FC = () => {
     fetchData();
   }, []);
 
-  /*const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
+  const handleSelectChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSelectTerm(event.target.checked ? event.target.value : "");
   };
   const filteredItems = pokemons
     .filter((pokemon) =>
-      pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
+      pokemon.typePrymary.toLowerCase().includes(selectTerm.toLowerCase()) ||
+      (pokemon.typeSecondary && pokemon.typeSecondary.toLowerCase().includes(selectTerm.toLowerCase()))
     );
-
-  const handleSortChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    setSortBy(event.target.value);
-  };
-
-  const handleOrderChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSortOrder(event.target.checked ? "DESC" : "ASC");
-  };*/
 
   return (
     <main className={styles.main}>
-      <div>
-      </div>
+      <SelectBar onSelectChange={handleSelectChange}></SelectBar>
       <div className={styles.cardContainer}>
-        {pokemons.map((pokemon) => (
+        {filteredItems.map((pokemon) => (
           <GalleryCard pokemon={pokemon} key={pokemon.pokedexNumber} />
         ))}
       </div>

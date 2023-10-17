@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from "react";
-import styles from "/styles/components/atoms/SearchBar.module.css";
+import styles from "/styles/components/SearchBar.module.css";
 
 interface SearchBarProps {
   onSearchChange: (event: ChangeEvent<HTMLInputElement>) => void;
