@@ -32,6 +32,7 @@ const Gallery: React.FC = () => {
   const handleSelectChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSelectTerm(event.target.checked ? event.target.value : "");
   };
+  
   const filteredItems = pokemons
     .filter((pokemon) =>
       pokemon.typePrymary.toLowerCase().includes(selectTerm.toLowerCase()) ||

@@ -10,17 +10,25 @@
     text-transform: uppercase;
     font-size: small;
     justify-content: center;
+    
 }
 .round{
     border-radius: 50px;
     width: 6rem !important;
 }
+
 @media (max-width: 500px) {
     .round {
       scale: 0.75; /* Cambia el tamaño de la imagen a 100px si la pantalla es menor a 500px de ancho */
     }
   }
-
+.banner{
+   flex-direction: column-reverse;
+   padding: 0.5rem 0.25rem 1rem 0.25rem;
+   width: 4rem !important;
+   border-bottom-left-radius: 50px;
+   border-bottom-right-radius: 50px;
+}
 
 .bug {
     background-color: #92BC2C;

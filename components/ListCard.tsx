@@ -16,8 +16,8 @@ const ListCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
             <h4 className={styles.number}>{pokemon.pokedexNumber}</h4>
         </div>
         <div className={styles.typesContainer}>
-          <TypeCard type={pokemon.typePrymary} round='round'/>
-          {pokemon.typeSecondary && <TypeCard type={pokemon.typeSecondary} round='round'/>}
+          <TypeCard type={pokemon.typePrymary} variant='round'/>
+          {pokemon.typeSecondary && <TypeCard type={pokemon.typeSecondary} variant='round'/>}
         </div>
     </div>
   );
