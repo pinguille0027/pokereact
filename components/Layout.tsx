@@ -1,7 +1,7 @@
 import styles from "../styles/components/layout.module.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import List from "../pages/List";
-import Gallery from "../pages/Galery";
+import Gallery from "../pages/Gallery";
 
 const Layeout: React.FC = () => {
   return (

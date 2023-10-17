@@ -2,13 +2,14 @@ import React from 'react';
 import styles from "../../styles/components/atoms/typeCard.module.css"
 type TypeCardProps = {
     type: string;
+    round?: "round" | ""
 };
 
-const TypeCard: React.FC<TypeCardProps> = ({ type }) => {
+const TypeCard: React.FC<TypeCardProps> = ({ type, round = "" }) => {
     const iconURI= `/typesIcons/${type}.svg`
     const typeBackground = `${type}`
     return (
-        <div className={`${styles.container} ${styles[typeBackground]}`}>
+        <div className={`${styles.container} ${styles[typeBackground]} ${styles[round]}`}>
 
             <img src={iconURI} alt="type icon" width="25"/>
             <h4>{type}</h4>

@@ -1,13 +1,13 @@
 import React from 'react';
 import {PokemonType} from "../types/PokemonType"
 import TypeCard from './atoms/TypeCard';
-import styles from "../styles/components/PokemonCard.module.css"
+import styles from "../styles/components/ListCard.module.css"
 
 type PokemonCardProps = {
     pokemon: PokemonType;
 };
 
-const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
+const ListCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
   return (
     <div className={styles.cardContainer}>
             <img src={pokemon.spriteUrl} alt="default front sprite"  className={styles.img}/>
@@ -16,11 +16,11 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
             <h4 className={styles.number}>{pokemon.pokedexNumber}</h4>
         </div>
         <div className={styles.typesContainer}>
-          <TypeCard type={pokemon.typePrymary}/>
-          {pokemon.typeSecondary && <TypeCard type={pokemon.typeSecondary}/>}
+          <TypeCard type={pokemon.typePrymary} round='round'/>
+          {pokemon.typeSecondary && <TypeCard type={pokemon.typeSecondary} round='round'/>}
         </div>
     </div>
   );
 };
 
-export default PokemonCard;
+export default ListCard;

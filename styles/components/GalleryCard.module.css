@@ -1,0 +1,44 @@
+.cardContainer{
+  display: grid;
+  grid-template-areas:
+      'img'
+      'img'
+      'title'
+      'types';
+  background-color: rgb(var(--color-accent));
+  margin-top: 5px;
+  /*outline: 2.5px solid rgb(var(--color-blue));*/
+}
+.cardContainer:hover{
+  transform: scale(1.1);
+}
+.img{
+  grid-area: img;
+  width: 14.4rem;
+  border-bottom: 4px double rgb(var(--color-blue));
+}
+
+.title{
+  grid-area: title;
+  display: flex;
+  justify-content: space-between;
+  max-width: 14.4rem;
+  margin: 0 1.5rem;
+}
+.name::first-letter{
+  text-transform: uppercase;
+}
+.number{
+  font-style: italic;
+  font-weight: 400;
+}
+.number::before{
+  content: "#";
+  font-style: italic;
+  font-weight: 400;
+}
+.typesContainer{
+  grid-area: types;
+  display: flex;
+  flex-wrap: nowrap;
+}
