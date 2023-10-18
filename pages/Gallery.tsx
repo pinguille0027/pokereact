@@ -6,7 +6,7 @@ import { fetchPokemons } from "../utils/fetchpokemons";
 import SelectBar from "../components/SelectBar"
 
 const Gallery: React.FC = () => {
-  const [selectTerm, setSelectTerm] = useState<string>("");
+  const [selectTerm, setSelectTerm] =  useState<string[]>([]);
   const [pokemons, setPokemons] = useState<PokemonType[]>([]);
 
   useEffect(() => {
@@ -30,14 +30,27 @@ const Gallery: React.FC = () => {
   }, []);
 
   const handleSelectChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSelectTerm(event.target.checked ? event.target.value : "");
+    const term = event.target.value;
+  setSelectTerm(prevTerms => {
+    if (prevTerms.includes(term)) {
+      // Si el término ya está en el array, quítalo
+      return prevTerms.filter(t => t !== term);
+    } else {
+      // Si el término no está en el array, agrégalo
+      return [...prevTerms, term];
+    }
+  });
   };
   
-  const filteredItems = pokemons
-    .filter((pokemon) =>
-      pokemon.typePrymary.toLowerCase().includes(selectTerm.toLowerCase()) ||
-      (pokemon.typeSecondary && pokemon.typeSecondary.toLowerCase().includes(selectTerm.toLowerCase()))
-    );
+  const filteredItems = pokemons.filter(pokemon => {
+    if (selectTerm.length === 0) {
+      return true;
+    }
+    const primaryMatch = selectTerm.some(term => pokemon.typePrymary.toLowerCase().includes(term.toLowerCase()));
+    const secondaryMatch = pokemon.typeSecondary && selectTerm.some(term => pokemon.typeSecondary?.toLowerCase().includes(term.toLowerCase()));
+    return primaryMatch || secondaryMatch;
+  });
+  
 
   return (
     <main className={styles.main}>

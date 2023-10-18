@@ -15,9 +15,10 @@ const SelectBar: React.FC<SearchBarProps> = ({
   return (
     <form className={styles.formContainer}>
       {options.map((item) =>(
-        <div className={styles.checkContainer}>
-        <label className={styles.banner}><TypeCard type={item} variant="banner"/></label>
+        <div className={styles.checkContainer} key={item}>
+        
         <input type="checkbox" value={item} onChange={onSelectChange} />
+        <label className={styles.banner}><TypeCard type={item} variant="banner"/></label>
         </div>
       ))}
     </form>
