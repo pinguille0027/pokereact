@@ -1,28 +1,7 @@
 .ui{
     overflow-y: hidden;
 }
-.topbar{
-    background-color: rgb(var(--color-primary));
-    display: flex;
-    justify-content: space-between;
-    padding: 0.3rem 0rem;
-    color: rgb(var(--color-background));
-    margin-bottom: 1rem;
-    position: fixed;
-    overflow-y: hidden;
-  width: 100%;
-  z-index: 1000;
-  top: 0;
-}
-.logo{
-    margin-left: 4rem;
-}
-.nav{
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-right: 4rem;
-}
+
 .content {
     padding: 20px;
     margin-top: 80px; /* Altura de la topbar + algo de espacio para separar el contenido de la barra superior */

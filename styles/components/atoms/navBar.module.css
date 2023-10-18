@@ -1,0 +1,41 @@
+.topbar {
+  background-color: rgb(var(--color-primary));
+  display: flex;
+  justify-content: space-between;
+  height: 4rem;
+  
+  margin-bottom: 1rem;
+  position: fixed;
+  overflow-y: hidden;
+  width: 100%;
+  z-index: 1000;
+  top: 0;
+}
+.logo {
+  margin-left: 4rem;
+  align-self: center;
+  
+}
+.nav {
+  display: flex;
+  align-items: center;
+  margin-right: 4rem;
+}
+.nav button{
+  color: rgb(var(--color-background));
+  background-color: rgb(var(--color-primary));
+  outline: none;
+  border: none;
+  font-family: system-ui, Helvetica, Arial, sans-serif;
+  height: 100%;
+  width: 6rem;
+  cursor: pointer;
+}
+.nav button:hover{
+  background-color: #e94141;
+  text-decoration: underline;
+}
+.activeLink{
+  background-color: #c62828 !important;
+  text-decoration: none !important;
+}

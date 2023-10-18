@@ -32,7 +32,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
       <section className={styles.section}>
         <label>Ordering</label>
         <div className={styles.checkContainer}>
-          <input type="checkbox" onChange={onOrderChange} />
+          <input type="radio" onChange={onOrderChange} />
           <span className={styles.triangle}>&#128315;</span>
         </div>
       </section>
