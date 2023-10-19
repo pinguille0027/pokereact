@@ -73,6 +73,7 @@ const List: React.FC = () => {
           <ListCard pokemon={pokemon} key={pokemon.pokedexNumber} />
         ))}
       </div>
+      
     </main>
   );
 };
