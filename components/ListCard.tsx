@@ -2,7 +2,7 @@ import React from 'react';
 import {PokemonType} from "../types/PokemonType"
 import TypeCard from './atoms/TypeCard';
 import styles from "../styles/components/ListCard.module.css"
-
+import PokemonDetails from './atoms/DetailsButton';
 type PokemonCardProps = {
     pokemon: PokemonType;
 };
@@ -18,6 +18,9 @@ const ListCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
         <div className={styles.typesContainer}>
           <TypeCard type={pokemon.typePrymary} variant='round'/>
           {pokemon.typeSecondary && <TypeCard type={pokemon.typeSecondary} variant='round'/>}
+        </div>
+        <div className={styles.buttonDetailsContainer}>
+          <PokemonDetails/>
         </div>
     </div>
   );

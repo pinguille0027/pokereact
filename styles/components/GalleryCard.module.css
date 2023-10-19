@@ -8,6 +8,7 @@
   background-color: rgb(var(--color-accent));
   margin-top: 5px;
   /*outline: 2.5px solid rgb(var(--color-blue));*/
+  position: relative;
 }
 .cardContainer:hover{
   transform: scale(1.1);
@@ -41,4 +42,9 @@
   grid-area: types;
   display: flex;
   flex-wrap: nowrap;
+}
+.buttonDetailsContainer{
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }

@@ -8,6 +8,7 @@
     margin-top: 5px;
     grid-template-columns: 40% 60%;
     width: 575px;
+    position: relative;
     
 }
 .cardContainer:hover{
@@ -45,4 +46,9 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.2rem;
+}
+.buttonDetailsContainer{
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }

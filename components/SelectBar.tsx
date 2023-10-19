@@ -3,7 +3,7 @@ import styles from "../styles/components/SelectBar.module.css";
 import TypeCard from "./atoms/TypeCard";
 const options = [
   "bug", "dark", "dragon", "electric", "fire", "fairy", "fighting", "flying", "ghost",
-  "grass", "ground", "ice", "normal", "poison", "steel", "water"
+  "grass", "ground", "ice", "normal", "poison", "rock", "steel", "water"
 ]
 interface SearchBarProps {
   onSelectChange: (event: ChangeEvent<HTMLInputElement>) => void;
