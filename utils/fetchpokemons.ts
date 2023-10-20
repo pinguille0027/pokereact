@@ -34,6 +34,8 @@ export async function fetchPokemons(/*limit and offset */) {
           return formattedDescription;
         }
         const formattedDescription = formatDescription(pokemonDescription.flavor_text_entries[0].flavor_text);
+        const height_meters = pokemonData.height / 10;
+        const weight_kilograms = pokemonData.weight / 10;
         return {
           pokedexNumber: pokemonData.id,
           name: pokemonData.name,
@@ -43,8 +45,8 @@ export async function fetchPokemons(/*limit and offset */) {
           typeSecondary: pokemonData.types[1]?.type.name || null,
           abilities: abilities,
           description: formattedDescription,
-          height: pokemonData.height,
-          weight: pokemonData.weight,
+          height: height_meters,
+          weight: weight_kilograms,
           stats: [
             {name: "HP", base: pokemonData.stats[0].base_stat},
             {name: "Attack", base: pokemonData.stats[1].base_stat},
