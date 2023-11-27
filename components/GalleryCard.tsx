@@ -21,7 +21,7 @@ const GalleryCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
           {pokemon.typeSecondary && <TypeCard type={pokemon.typeSecondary}/>}
         </div>
         <div className={styles.buttonDetailsContainer}>
-          <PokemonDetails/>
+          <PokemonDetails pokemon={pokemon}/>
         </div>
     </div>
   );

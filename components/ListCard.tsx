@@ -20,7 +20,7 @@ const ListCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
           {pokemon.typeSecondary && <TypeCard type={pokemon.typeSecondary} variant='round'/>}
         </div>
         <div className={styles.buttonDetailsContainer}>
-          <PokemonDetails/>
+          <PokemonDetails pokemon={pokemon}/>
         </div>
     </div>
   );

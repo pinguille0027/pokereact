@@ -45,7 +45,7 @@ interface OverlayProps {
 const Overlay: React.FC<OverlayProps> = ({ content, onClose }) => {
   return (
     <div className={styles.overlay} onClick={onClose}>
-      <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+      <div className={styles.content} onClick={(e) => e.stopPropagation()}>
         {content}
       </div>
     </div>

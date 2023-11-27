@@ -9,5 +9,90 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  
+}
+.content{
+  background-color: rgb(var(--color-background));
+  max-width: 70%;
+}
+.showButton{
+  appearance: none;
+  border: none;
+}
+.container{
+  display: grid;
+  grid-template-areas: 
+    'nav nav'
+    'aside title'
+    'aside description'
+    'aside abilities'
+    'aside stats'
+    'measures stats'
+    'types stats'
+  ;
+  grid-template-areas: auto auto;
+  gap: 0.5rem;
+}
+.nav{
+  background-color: rgb(var(--color-primary));
+  grid-area: nav;
+}
+.aside{
+  grid-area: aside;
+}
+.title{
+  grid-area: title;
+  display: flex;
+  justify-content: space-evenly;
+}
+.measures{
+  grid-area: measures;
+}
+.description{
+  grid-area: description;
+}
+.abilities{
+  grid-area: abilities;
+}
+.stats{
+  grid-area: stats;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 1rem;
+}
+.types{
+  grid-area: types;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.name::first-letter{
+  text-transform: uppercase;
+}
+.number{
+  font-style: italic;
+  font-weight: 400;
+}
+.number::before{
+  content: "#";
+  font-style: italic;
+  font-weight: 400;
+}
+.statBarContainer{
+  position: relative;
+}
+.statBar{
+  height: 1.5rem;
+  justify-self: end;
+  position: absolute;
+  right: 10px;
+}
+.statBase{
+  position: absolute;
+  right: 10px;
+}
+.statBar::-webkit-progress-bar {
+  background-color: rgb(var(--color-accent));
+}
+.statBar::-webkit-progress-value {
+  background-color: rgb(var(--color-blue));
 }
